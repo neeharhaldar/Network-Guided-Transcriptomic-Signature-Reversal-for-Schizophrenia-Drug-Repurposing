@@ -141,6 +141,46 @@ This supports the biological validity of the transcriptomic reversal framework.
 
 ---
 
+# External Validation via Connectivity Map (CLUE.io)
+
+While the internal network pharmacology pipeline utilizes mathematical and graphical models (Protein-Protein Interactions) to predict drug efficacy, it is critical to cross-reference these theoretical predictions with empirical biological data. To achieve this, we utilized the **Broad Institute’s Connectivity Map (CMap / CLUE.io)**. 
+
+CMap is a massive perturbation database containing over a million gene expression profiles from human cell lines treated with various FDA-approved drugs, experimental small molecules, and genetic inhibitors. By querying our schizophrenia disease signature against this database, we search for empirical **Transcriptomic Reversal**:
+
+1. **The Query:** We isolated the top 150 significantly up-regulated and down-regulated genes from our disease model to generate a targeted signature.
+2. **The Comparison:** CMap systematically compares this disease state against its library of drug-induced states. 
+3. **The Connectivity Score (norm_cs):** * A **negative score** indicates that a drug empirically induces a transcriptomic state *opposite* to the disease (e.g., it down-regulates the genes that schizophrenia up-regulates). These are our **Therapeutic Candidates (Reversers)**.
+   * A **positive score** indicates that a drug mimics the disease signature, potentially exacerbating the pathology.
+
+By demonstrating that the molecular hubs identified by our *in-silico* network model align tightly with the top-scoring *empirical* reversers in the CMap database, we establish highly robust, dual-validated candidates for drug repurposing.
+
+---
+
+# Final Conclusion & Synthesis: Dual-Validation
+
+The primary objective of this pipeline was to discover novel drug repurposing candidates for schizophrenia by targeting the underlying transcriptomic abnormalities in the hippocampus. By employing two orthogonal approaches—an **internal network-guided structural scoring system** and an **external empirical validation via CLUE.io**—we identified highly concordant therapeutic paradigms. 
+
+The correlation between our computationally derived network scores and the real-world *in vitro* perturbations yields three critical insights:
+
+### 1. The Resveratrol / SIRT1 Axis (A Dual-Validated Target)
+The most striking discovery in this analysis is the independent convergence of both pipelines on the **Sirtuin (SIRT) pathway**.
+* **Internal Pipeline:** Identified **Resveratrol** as the #2 highest-scoring candidate overall, indicating a massive structural capacity to disrupt the disease network.
+* **External Validation:** Independently identified **SIRT Activators** as the #1 most potent mechanistic class for reversing the schizophrenia transcriptomic signature. 
+* **Synthesis:** Resveratrol is the canonical SIRT1 activator. The fact that a purely structural network model prioritized this specific molecule, while an empirical transcriptomic database prioritized its exact pharmacological class, provides exceptionally high confidence in SIRT1 activation as a disease-modifying mechanism.
+
+### 2. A Paradigm Shift: Epigenetics & Metabolism
+Both analytical methods strongly suggest that reversing the core transcriptomic signature requires **metabolic and epigenetic modulation**, rather than classical neurotransmitter blockade.
+* **The Rosiglitazone Validation:** Our internal structural scoring identified **Rosiglitazone** (a PPAR-γ agonist and metabolic modulator) as the absolute highest-scoring candidate in the entire pipeline by a massive margin. 
+* **CMap Corroboration:** The CLUE.io empirical data fully validates this shift. The top transcriptomic reversers in CMap were dominated by epigenetic modulators (**HDAC Inhibitors**, **Bromodomain Inhibitors**) and metabolic/stress regulators (**FXR Antagonists**, **JNK Inhibitors**). This provides the necessary biological plausibility for Rosiglitazone’s mathematical dominance in our network model.
+
+### 3. Successful Detection of Standard Therapeutics
+To validate the model’s sensitivity, we assessed the performance of known standard-of-care antipsychotics (e.g., **Olanzapine**, **Haloperidol**). Our network successfully detected and captured the transcriptomic signatures of these clinical compounds (yielding reliable baseline scores of 6.71 and 1.55, respectively).
+
+---
+
+# Future Directions
+The dual-validation achieved in this pipeline strongly supports the pivot toward neuro-metabolic and epigenetic drug repurposing for Schizophrenia. The top candidates—specifically **Resveratrol (SIRT1 activation)** and **Rosiglitazone (PPARγ agonism)** —warrant immediate downstream investigation.
+
 # Technologies Used
 
 ## Programming Language
@@ -162,6 +202,7 @@ This supports the biological validity of the transcriptomic reversal framework.
 - Cytoscape
 - STRING Database
 - cytoHubba
+- clue.io
 
 ---
 
